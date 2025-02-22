@@ -1,4 +1,5 @@
 ﻿using Caching.Api.Models;
+using Caching.Api.Services.Interfaces;
 
 namespace Caching.Api.Services;
 

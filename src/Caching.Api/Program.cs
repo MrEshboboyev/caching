@@ -1,15 +1,19 @@
 using Caching.Api.Endpoints;
-using Caching.Api.Models;
 using Caching.Api.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
+using Caching.Api.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 builder.Services.AddMemoryCache();
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetValue<string>("Redis:ConnectionString");
+
+});
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductCachingService, ProductCachingService>();
 
 var app = builder.Build();
 
@@ -24,6 +28,7 @@ app.UseHttpsRedirection();
 
 app.MapProductEndpoints(); // Use the extension method to map product endpoints
 app.MapMemoryCacheEndpoints(); // Use the extension method to map memory cache endpoints
+app.MapDistributedCacheEndpoints(); // Use the extension method to map distributed cache endpoints
 
 #endregion
 

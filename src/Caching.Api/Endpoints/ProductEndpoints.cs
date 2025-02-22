@@ -1,4 +1,4 @@
-﻿using Caching.Api.Services;
+﻿using Caching.Api.Services.Interfaces;
 
 namespace Caching.Api.Endpoints;
 

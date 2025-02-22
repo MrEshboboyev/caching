@@ -1,6 +1,6 @@
 ﻿using Caching.Api.Models;
 
-namespace Caching.Api.Services;
+namespace Caching.Api.Services.Interfaces;
 
 public interface IProductService
 {

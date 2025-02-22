@@ -1,8 +1,8 @@
 ﻿using Caching.Api.Models;
-using Caching.Api.Services;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using Caching.Api.Services.Interfaces;
 
 namespace Caching.Api.Endpoints;
 
