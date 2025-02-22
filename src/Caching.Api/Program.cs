@@ -11,6 +11,11 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration.GetValue<string>("Redis:ConnectionString");
 
 });
+// Add Output Caching services
+builder.Services.AddOutputCache(options =>
+{
+    options.AddBasePolicy(builder => builder.Expire(TimeSpan.FromSeconds(30)));
+});
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductCachingService, ProductCachingService>();

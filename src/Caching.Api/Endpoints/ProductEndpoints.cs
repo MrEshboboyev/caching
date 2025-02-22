@@ -10,6 +10,8 @@ public static class ProductEndpoints
         app.MapGet("/products", (IProductService productService) =>
         {
             return Results.Ok(productService.GetAll());
-        });
+        })
+        .CacheOutput(policy => policy.Expire(TimeSpan.FromSeconds(30))); // Enable output caching with a 30-second expiration
+
     }
 }
