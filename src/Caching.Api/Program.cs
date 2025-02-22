@@ -12,10 +12,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 });
 // Add Output Caching services
-builder.Services.AddOutputCache(options =>
-{
-    options.AddBasePolicy(builder => builder.Expire(TimeSpan.FromSeconds(30)));
-});
+builder.Services.AddOutputCache();
 builder.Services.AddResponseCaching();
 
 builder.Services.AddScoped<IProductService, ProductService>();
@@ -28,6 +25,12 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.Use(async (context, next) =>
+{
+    Console.WriteLine($"[{DateTime.UtcNow}] Processing request: {context.Request.Method} {context.Request.Path}");
+    await next();
+});
+
 app.UseOutputCache();
 app.UseResponseCaching();
 
@@ -38,6 +41,8 @@ app.UseHttpsRedirection();
 app.MapProductEndpoints(); // Use the extension method to map product endpoints
 app.MapMemoryCacheEndpoints(); // Use the extension method to map memory cache endpoints
 app.MapDistributedCacheEndpoints(); // Use the extension method to map distributed cache endpoints
+app.MapOutputCacheEndpoints(); // Use the extension method to map output cache endpoints
+app.MapResponseCacheEndpoints(); // Use the extension method to map response cache endpoints
 
 #endregion
 
