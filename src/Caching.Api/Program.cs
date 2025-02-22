@@ -16,6 +16,7 @@ builder.Services.AddOutputCache(options =>
 {
     options.AddBasePolicy(builder => builder.Expire(TimeSpan.FromSeconds(30)));
 });
+builder.Services.AddResponseCaching();
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductCachingService, ProductCachingService>();
@@ -26,6 +27,9 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseOutputCache();
+app.UseResponseCaching();
 
 app.UseHttpsRedirection();
 
