@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C120581-B4DF-4A0C-BFDC-5C3E051B93E1}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{19F7E9DF-027A-488A-8B75-F66FC2AEA77C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching.Api", "src\Caching.Api\Caching.Api.csproj", "{A8635177-1A92-443A-8879-5F45B635B972}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8635177-1A92-443A-8879-5F45B635B972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8635177-1A92-443A-8879-5F45B635B972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8635177-1A92-443A-8879-5F45B635B972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8635177-1A92-443A-8879-5F45B635B972}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A8635177-1A92-443A-8879-5F45B635B972} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB0EBD4A-C13C-4937-9AEC-1ED511A45D12}
+	EndGlobalSection
+EndGlobal
