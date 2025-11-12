@@ -68,7 +68,6 @@ builder.Services.Decorate<IEnhancedCacheService>((inner, serviceProvider) =>
 
 // Register cache warming service as a hosted service
 builder.Services.AddHostedService<CacheWarmingService>();
-builder.Services.AddScoped<CacheWarmingService>();
 
 // Add controllers
 builder.Services.AddControllers();

@@ -1,0 +1,28 @@
+services:
+  api:
+    image: ${DOCKER_REGISTRY-}caching-api
+    container_name: caching-api
+    build:
+      context: .
+      dockerfile: src/Caching.Api/Dockerfile
+    networks:
+      - caching-network
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    container_name: caching-redis
+    networks:
+      - caching-network
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+networks:
+  caching-network:
+    driver: bridge
+
+volumes:
+  redis-data:

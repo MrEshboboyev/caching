@@ -4,8 +4,7 @@ using Caching.Api.Services.Interfaces;
 namespace Caching.Api.Services;
 
 public class CacheWarmingService(
-    IEnhancedCacheService cacheService,
-    IProductService productService,
+    IServiceProvider serviceProvider,
     ILogger<CacheWarmingService> logger
 ) : IHostedService
 {
@@ -38,6 +37,11 @@ public class CacheWarmingService(
         try
         {
             logger.LogInformation("Starting product cache warmup");
+
+            // Create a scope to resolve scoped services
+            using var scope = serviceProvider.CreateScope();
+            var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
+            var cacheService = scope.ServiceProvider.GetRequiredService<IEnhancedCacheService>();
 
             // Get products from the data source
             var products = productService.GetAll();
@@ -86,6 +90,11 @@ public class CacheWarmingService(
         try
         {
             logger.LogInformation("Starting product cache warmup for category: {Category}", category);
+
+            // Create a scope to resolve scoped services
+            using var scope = serviceProvider.CreateScope();
+            var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
+            var cacheService = scope.ServiceProvider.GetRequiredService<IEnhancedCacheService>();
 
             // Get products from the data source (in a real app, this would filter by category)
             var products = productService.GetAll().Where(p => p.Name.Contains(category, StringComparison.OrdinalIgnoreCase));
