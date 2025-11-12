@@ -5,5 +5,7 @@
 	<ItemGroup>
 		<PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
 		<PackageVersion Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.2" />
+		<PackageVersion Include="Scrutor" Version="5.0.1" />
+		<PackageVersion Include="MessagePack" Version="2.5.187" />
 	</ItemGroup>
 </Project>
